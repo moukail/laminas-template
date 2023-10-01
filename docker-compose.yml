@@ -1,7 +1,7 @@
 version: '3.9'
 services:
   web:
-    container_name:$HOST_NAME
+    container_name: $HOST_NAME
     user: root
     build:
       context: .docker/php
@@ -17,6 +17,12 @@ services:
       - "host.docker.internal:host-gateway"
     depends_on:
       - database
+    networks:
+      - traefik_net
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.symfony.rule=Host(`symfony.app.localhost`)"
+      - "traefik.http.routers.symfony.tls=true"
     tty: true
 
   database:
@@ -28,10 +34,13 @@ services:
       - $DATABASE_PORT
     volumes:
       - database:/var/lib/mysql
+      - ./certs:/etc/mysql/certs
       #- ./.docker/data:/docker-entrypoint-initdb.d
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=$DATABASE_NAME
+    networks:
+      - traefik_net
 
 volumes:
   database:
@@ -40,6 +49,5 @@ volumes:
     driver: local
 
 networks:
-  default:
-    name: moukail
+  traefik_net:
     external: true
