@@ -21,7 +21,7 @@ services:
       - traefik_net
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.symfony.rule=Host(`symfony.app.localhost`)"
+      - "traefik.http.routers.symfony.rule=Host(`laminas.app.localhost`)"
       - "traefik.http.routers.symfony.tls=true"
     tty: true
 
