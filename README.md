@@ -1,13 +1,3 @@
-# Symfony
-```bash
-echo | symfony server:ca:install
-symfony serve --p12=/var/www/certs/localhost.p12
-
-symfony self:update --no-interaction
-symfony self:version
-symfony self:cleanup
-```
-
 # Composer packages
 ```bash
 symfony composer require --no-interaction symfony/amqp-pack ramsey/uuid-doctrine symfony/mailgun-mailer symfony/mercure-bundle
