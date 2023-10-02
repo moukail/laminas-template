@@ -67,7 +67,7 @@ symfony local:check:requirements
 symfony local:check:security
 symfony console about
 
-symfony serve
+symfony local:server:start --daemon
 symfony local:server:status
 symfony local:server:list
 
