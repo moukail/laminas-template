@@ -37,7 +37,7 @@ RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" \
     && sed -i "s|;date.timezone =.*|date.timezone = ${TIMEZONE}|" /usr/local/etc/php/php.ini \
     && sed -i "s|memory_limit =.*|memory_limit = -1|" /usr/local/etc/php/php.ini
 
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer
+RUN wget https://getcomposer.org/installer -O - | php -- --install-dir=/usr/bin/ --filename=composer
 
 # Symfony CLI
 RUN wget https://get.symfony.com/cli/installer -O - | bash && mv /root/.symfony5/bin/symfony /usr/bin/symfony
