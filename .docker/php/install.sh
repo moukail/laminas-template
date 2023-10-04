@@ -1,4 +1,5 @@
 rm -rf ./*
+rm -rf ./.*
 
 echo "-------------------------------------------------------------------"
 echo "-             Laminas MVC Skeleton Application                    -"
